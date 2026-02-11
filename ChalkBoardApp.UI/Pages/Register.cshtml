@@ -1,0 +1,32 @@
+﻿@page
+@model ChalkBoardApp.UI.Pages.RegisterModel
+
+
+<<div class="min-vh-100 d-flex align-items-center justify-content-center">
+    <div class="card shadow-sm p-4" style="width: 420px; border-radius: 16px;">
+        <h2 class="mb-3">Register</h2>
+
+        <form method="post">
+            <div class="mb-3">
+                <input class="form-control" type="text" asp-for="Username" placeholder="Username" />
+                <span class="text-danger small" asp-validation-for="Username"></span>
+            </div>
+
+            <div class="mb-3">
+                <input class="form-control" type="password" asp-for="Password" placeholder="Password" />
+                <span class="text-danger small" asp-validation-for="Password"></span>
+            </div>
+
+            <div class="mb-3">
+                <input class="form-control" type="password" asp-for="ConfirmPassword" placeholder="Confirm password" />
+                <span class="text-danger small" asp-validation-for="ConfirmPassword"></span>
+            </div>
+
+            <button class="btn btn-dark w-100" type="submit">Create account</button>
+
+            <div class="text-center mt-3">
+                <a asp-page="/Login">Already have an account? Login</a>
+            </div>
+        </form>
+    </div>
+</div>
