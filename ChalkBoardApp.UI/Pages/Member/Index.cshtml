@@ -2,3 +2,69 @@
 @model ChalkBoardApp.UI.Pages.Member.IndexModel
 @{
 }
+
+<div class="container py-4" style="max-width: 900px;">
+    <h1 class="mb-2">Member Area</h1>
+    <p class="text-muted mb-4">Du ser detta om du är inloggad</p>
+
+    <div class="row g-4">
+        <!-- 1) READ-ONLY: Message feed -->
+        <div class="col-12 col-lg-8">
+            <div class="card shadow-sm" style="border-radius: 16px;">
+                <div class="card-header bg-white" style="border-top-left-radius:16px;border-top-right-radius:16px;">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <strong>Meddelanden</strong>
+                        <span class="text-muted small">Nyast först</span>
+                    </div>
+                </div>
+
+                <div class="card-body" style="max-height: 520px; overflow:auto;">
+                    @if (Model.Messages.Any())
+                    {
+                        @foreach (var message in Model.Messages)
+                        {
+                            <div class="border rounded-3 p-3 mb-3">
+                                <div class="d-flex justify-content-between">
+                                    <strong>@message.AuthorName</strong>
+                                    <span class="text-muted small">@message.CreatedAt.ToString("yyyy-MM-dd HH:mm")</span>
+                                </div>
+                                <div class="mt-2">@message.Content</div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="text-muted text-center py-4">
+                            Inga meddelanden ännu. Var den första att skriva något!
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- 2) INPUT: Post a message -->
+        <div class="col-12 col-lg-4">
+            <div class="card shadow-sm" style="border-radius: 16px;">
+                <div class="card-header bg-white" style="border-top-left-radius:16px;border-top-right-radius:16px;">
+                    <strong>Skriv nytt</strong>
+                </div>
+
+                <div class="card-body">
+                    <form method="post">
+                        <div class="mb-3">
+                            <label class="form-label">Meddelande</label>
+                            <textarea class="form-control" rows="5" placeholder="Skriv något..." asp-for="NewMessage"></textarea>
+                            <span class="text-danger small" asp-validation-for="NewMessage"></span>
+                        </div>
+
+                        <button class="btn btn-dark w-100" type="submit">Posta</button>
+
+                        <div class="text-muted small mt-3">
+                            Du kan inte redigera meddelanden efter att de postats.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
