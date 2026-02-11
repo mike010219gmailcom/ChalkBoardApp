@@ -10,7 +10,6 @@ namespace ChalkBoardApp.DAL.Data
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
-            public DbSet<Models.MessageModel> Messages { get; set; }
-
+        public DbSet<Models.MessageModel> Messages { get; set; }
     }
 }
