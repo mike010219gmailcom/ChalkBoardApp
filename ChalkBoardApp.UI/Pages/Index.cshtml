@@ -1,10 +1,31 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "ChalkBoard";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="login-page">
+    <div class="login-card">
+        <h2>Login</h2>
+
+        <form method="post" class="login-form">
+            <div class="field">
+                <label asp-for="Username"></label>
+                <input asp-for="Username" placeholder="Username" />
+                <span asp-validation-for="Username"></span>
+            </div>
+
+            <div class="field">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" placeholder="Password" />
+                <span asp-validation-for="Password"></span>
+            </div>
+
+            <button type="submit" class="btn-primary">Login</button>
+
+            <div class="login-links">
+                <a asp-page="/Register">Register</a>
+            </div>
+        </form>
+    </div>
 </div>
